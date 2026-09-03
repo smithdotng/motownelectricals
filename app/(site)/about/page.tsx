@@ -93,6 +93,14 @@ export default function AboutPage() {
                                         <th scope="row">Email</th>
                                         <td>
                                             <a href={COMPANY.emailHref}>{COMPANY.email}</a>
+                                            <br />
+                                            <a href={COMPANY.emailAltHref}>{COMPANY.emailAlt}</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Website</th>
+                                        <td>
+                                            <a href={COMPANY.websiteUrl}>{COMPANY.website}</a>
                                         </td>
                                     </tr>
                                 </tbody>

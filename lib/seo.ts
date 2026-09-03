@@ -66,7 +66,7 @@ export const ORGANISATION_JSONLD = {
     slogan: COMPANY.tagline,
     description:
         'Abuja-based electrical engineering and technical services company delivering electrical installation, power distribution, transformer works, solar and backup power, testing, commissioning and maintenance.',
-    email: COMPANY.email,
+    email: [COMPANY.email, COMPANY.emailAlt],
     telephone: COMPANY.phone,
     foundingDate: '2018-12-12',
     identifier: { '@type': 'PropertyValue', name: 'RC Number', value: COMPANY.rcNumber },

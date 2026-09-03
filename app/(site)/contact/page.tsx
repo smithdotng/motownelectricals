@@ -62,6 +62,9 @@ export default function ContactPage() {
                                         <span className="contact-value">
                                             <a href={COMPANY.emailHref}>{COMPANY.email}</a>
                                         </span>
+                                        <span className="contact-value">
+                                            <a href={COMPANY.emailAltHref}>{COMPANY.emailAlt}</a>
+                                        </span>
                                     </span>
                                 </div>
                                 <div className="contact-line">

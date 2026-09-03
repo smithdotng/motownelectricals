@@ -36,7 +36,17 @@ export default function EnquiryForm() {
             form.message
         ].join('\n');
 
-        window.location.href = `${COMPANY.emailHref}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        // Copy the Gmail address so enquiries still land if the domain mailbox
+        // is not yet receiving. Encoded with encodeURIComponent rather than
+        // URLSearchParams, which writes spaces as "+" — mail clients show those
+        // literally in the message body instead of as spaces.
+        const query = [
+            `cc=${encodeURIComponent(COMPANY.emailAlt)}`,
+            `subject=${encodeURIComponent(subject)}`,
+            `body=${encodeURIComponent(body)}`
+        ].join('&');
+
+        window.location.href = `${COMPANY.emailHref}?${query}`;
         setSent(true);
     }
 
@@ -137,7 +147,8 @@ export default function EnquiryForm() {
                     <div className="col-12">
                         <p className="text-muted small mb-0">
                             Your email application should now be open with the enquiry filled in. If nothing happened, email
-                            us directly at <a href={COMPANY.emailHref}>{COMPANY.email}</a>.
+                            us directly at <a href={COMPANY.emailHref}>{COMPANY.email}</a> or{' '}
+                            <a href={COMPANY.emailAltHref}>{COMPANY.emailAlt}</a>.
                         </p>
                     </div>
                 )}

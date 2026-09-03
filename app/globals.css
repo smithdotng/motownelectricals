@@ -95,6 +95,51 @@ img { max-width: 100%; }
     border-bottom-color: var(--thm-yellow);
 }
 
+/* Mobile menu panel — driven by React state in Header.tsx, not Bootstrap's
+   collapse plugin, so it closes on client-side route changes. The body prefix
+   beats Bootstrap's own `.collapse:not(.show)` rule, which loads afterwards. */
+@media (max-width: 991.98px) {
+    body .app-header .navbar-collapse {
+        display: block;
+        overflow: hidden;
+        max-height: 0;
+        opacity: 0;
+        transition: max-height 0.3s ease, opacity 0.2s ease;
+    }
+
+    body .app-header .navbar-collapse.show {
+        max-height: 520px;
+        opacity: 1;
+    }
+
+    .app-header .navbar-nav {
+        padding: 0.5rem 0 1rem;
+        border-top: 1px solid var(--thm-card-border);
+        margin-top: 0.5rem;
+    }
+
+    .app-header .nav-link {
+        border-bottom: none !important;
+        border-left: 3px solid transparent;
+        padding: 0.7rem 0.9rem !important;
+    }
+
+    .app-header .nav-link.active,
+    .app-header .nav-link:hover {
+        border-left-color: var(--thm-yellow);
+        background: var(--thm-bg-soft);
+        border-radius: 0 8px 8px 0;
+    }
+
+    .app-header .navbar-toggler {
+        border-color: var(--thm-card-border);
+    }
+
+    .app-header .navbar-toggler:focus {
+        box-shadow: 0 0 0 0.2rem rgba(7, 143, 203, 0.2);
+    }
+}
+
 .header-strip {
     background: var(--thm-navy);
     color: #cfe0ee;
@@ -428,6 +473,11 @@ body .info-table th, body .info-table td {
     transform: skewX(-12deg);
 }
 
+.page-banner .container {
+    position: relative;
+    z-index: 1;
+}
+
 .page-banner .eyebrow {
     color: var(--thm-cyan);
     text-transform: uppercase;
@@ -684,6 +734,8 @@ body .info-table th, body .info-table td {
 }
 
 .contact-line .contact-value { display: block; color: var(--thm-secondary); font-weight: 500; }
+
+.contact-line .contact-value + .contact-value { margin-top: 2px; }
 
 .map-frame {
     width: 100%;

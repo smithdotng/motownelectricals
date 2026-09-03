@@ -10,6 +10,8 @@ export const COMPANY = {
     phoneHref: 'tel:+2348039327932',
     email: 'info@motownelectricals.com',
     emailHref: 'mailto:info@motownelectricals.com',
+    emailAlt: 'motownelectricals@gmail.com',
+    emailAltHref: 'mailto:motownelectricals@gmail.com',
     website: 'motownelectricals.com',
     websiteUrl: 'https://motownelectricals.com'
 };

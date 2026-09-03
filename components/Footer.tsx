@@ -63,6 +63,10 @@ export default function Footer() {
                                 <a href={COMPANY.emailHref}>{COMPANY.email}</a>
                             </li>
                             <li>
+                                <i className="fa-solid fa-envelope me-2" aria-hidden="true"></i>
+                                <a href={COMPANY.emailAltHref}>{COMPANY.emailAlt}</a>
+                            </li>
+                            <li>
                                 <i className="fa-solid fa-globe me-2" aria-hidden="true"></i>
                                 <a href={COMPANY.websiteUrl}>{COMPANY.website}</a>
                             </li>
