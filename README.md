@@ -35,9 +35,11 @@ app/
     about/page.tsx         About / company overview
     services/page.tsx      Services & capabilities
     projects/page.tsx      Projects & portfolio
+    gallery/page.tsx       Men at Work photo gallery
     contact/page.tsx       Contact + enquiry form + map
 components/
   Header.tsx               sticky nav with contact strip
+  GalleryGrid.tsx          filterable gallery grid + lightbox
   Footer.tsx               navy footer with yellow/cyan accent bar
   EnquiryForm.tsx          client-side enquiry form
 lib/
@@ -60,13 +62,27 @@ root layout. Every page gets a canonical link, Open Graph tags (`og:title`, `og:
 
 `app/sitemap.ts` and `app/robots.ts` generate `/sitemap.xml` and `/robots.txt` at build time.
 
-Five 1200x630 share cards live in `public/images/`, one per page — `og-image.jpg` (home),
-`og-about.jpg`, `og-services.jpg`, `og-projects.jpg`, `og-contact.jpg`. Each pairs the navy/cyan
+Six 1200x630 share cards live in `public/images/`, one per page — `og-image.jpg` (home),
+`og-about.jpg`, `og-services.jpg`, `og-projects.jpg`, `og-gallery.jpg`, `og-contact.jpg`. Each pairs the navy/cyan
 brand panel (logo, headline, tagline, domain) with a project photograph. To regenerate one, edit the
 card and re-export at 1200x630; the filenames are referenced from each page's `pageMetadata()` call.
 
 After deploying, re-scrape the cards with Facebook's Sharing Debugger and LinkedIn's Post Inspector
 so the platforms pick up the new images.
+
+## Gallery
+
+`/gallery` ("Men at Work") is built from `lib/gallery.ts` — a category list plus one entry per
+photograph (`src`, `width`, `height`, `caption`, `category`). `components/GalleryGrid.tsx` renders a
+CSS-column masonry grid with category filter chips and a lightbox (arrow keys to move, Escape to
+close, page scroll locked while open).
+
+To add photographs: drop the files in `public/images/gallery/`, then add an entry to `GALLERY_ITEMS`
+with its real pixel dimensions — `next/image` needs them to reserve layout space. To add a category,
+add it to `GALLERY_CATEGORIES` and use its slug on the items; the filter chips and their counts are
+derived automatically.
+
+Source images are resized to a 1400px long edge at quality 82.
 
 ## Enquiry form
 
@@ -80,4 +96,3 @@ provider), then replace the `window.location.href` line with a `fetch` call.
 All photography in `public/images/` was extracted from
 `Motown_Electrical_Services_Company_Profile_Print.pdf`. Replace any file with a higher-resolution
 original of the same name and no code changes are needed.
-# motownelectricals
